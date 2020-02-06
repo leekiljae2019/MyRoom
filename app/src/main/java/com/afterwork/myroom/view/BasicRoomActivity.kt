@@ -19,13 +19,10 @@ class BasicRoomActivity: BaseActivity<ActivityBasicroomBinding>(){
     override val layoutResourceId: Int
         get() = R.layout.activity_basicroom
 
-    var db: BasicRoomDB? = null
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding.vmBasic = getViewModel{parametersOf(BasicRoomDB.getInstance(this)?.basicRoomDao())}
+        binding.vmBasic = getViewModel()
         binding.lifecycleOwner = this
 
         binding.vmBasic?.items?.observe(this, Observer {
@@ -33,11 +30,5 @@ class BasicRoomActivity: BaseActivity<ActivityBasicroomBinding>(){
                 list.scrollToPosition(it.size - 1)
             }
         })
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-
-        db?.close()
     }
 }

@@ -22,6 +22,7 @@
 
         <activity android:name=".view.BasicRoomActivity"/>
         <activity android:name=".view.PagingRoomActivity"/>
+        <activity android:name=".view.PagingRoomNetworkActivity"/>
     </application>
 
 </manifest>

@@ -11,16 +11,13 @@ import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.RecyclerView
 import com.afterwork.myroom.data.room.BasicRoomDao
 import com.afterwork.myroom.data.room.BasicRoomEntity
+import com.afterwork.myroom.data.room.BasicRoomTaskBuilder
 import com.afterwork.myroom.viewmodel.common.NotNullMutableLiveData
 
 
 class BasicRoomViewModel(val dao: BasicRoomDao): ViewModel(){
     companion object{
         val TAG = "BasicRoomViewModel"
-
-        val D_TITLE = "title"
-        val D_DESC = "description"
-        val D_LINK = "https://www.naver.com/"
     }
 
     private val _items: NotNullMutableLiveData<List<BasicRoomEntity>> =
@@ -38,28 +35,8 @@ class BasicRoomViewModel(val dao: BasicRoomDao): ViewModel(){
     }
 
     fun insert(){
-        var index = currentCount.get()+1
-        currentCount.set(index)
-        InsertTask(dao, _items, index).execute()
-    }
-
-    class InsertTask(val dao: BasicRoomDao, val items: MutableLiveData<List<BasicRoomEntity>>, val index: Int) : AsyncTask<Void, Void, BasicRoomEntity>(){
-        override fun doInBackground(vararg p0: Void?): BasicRoomEntity {
-            val item = BasicRoomEntity(
-                index,
-                "$D_TITLE${index}",
-                "$D_DESC${index}",
-                "$D_LINK${index}"
-            )
-            dao.insert(item)
-            Log.d(TAG, "insert(count: ${dao.getCount()})")
-            return item
-        }
-
-        override fun onPostExecute(result: BasicRoomEntity) {
-            super.onPostExecute(result)
-            this.items.postValue(this.items.value?.plus(result))
-        }
+        currentCount.set(currentCount.get()+1)
+        BasicRoomTaskBuilder.buildInsert(dao, _items).execute()
     }
 }
 

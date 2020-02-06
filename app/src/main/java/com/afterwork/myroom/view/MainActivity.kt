@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_paging_network_room.setOnClickListener {
-            startActivity(Intent(this, PagingNetworkRoomActivity::class.java))
+            startActivity(Intent(this, PagingRoomNetworkActivity::class.java))
         }
     }
 }

@@ -12,11 +12,12 @@ abstract class BasicRoomDB: RoomDatabase(){
 
         fun getInstance(appContext: Context): BasicRoomDB?{
             if(INSTANCE == null){
-                synchronized(BasicRoomDB::class){}
-                INSTANCE = Room.databaseBuilder(
-                    appContext,
-                    BasicRoomDB::class.java, "basicroom.db"
-                ).build()
+                synchronized(BasicRoomDB::class) {
+                    INSTANCE = Room.databaseBuilder(
+                        appContext,
+                        BasicRoomDB::class.java, "basicroom.db"
+                    ).build()
+                }
             }
 
             return INSTANCE

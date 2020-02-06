@@ -9,6 +9,9 @@ interface BasicRoomDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(item: BasicRoomEntity)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun bulkInsert(items: List<BasicRoomEntity>)
+
     @Delete
     fun delete(item: BasicRoomEntity)
 

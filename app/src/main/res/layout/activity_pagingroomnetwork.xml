@@ -5,8 +5,8 @@
 
     <data>
         <variable
-            name="vmPNR"
-            type="com.afterwork.myroom.viewmodel.pagingnetworkroom.PagingNetworkRoomViewModel" />
+            name="vmPRN"
+            type="com.afterwork.myroom.viewmodel.pagingroomnetwork.PagingRoomNetworkViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,8 +18,8 @@
             android:id="@+id/swipe_refresh"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:refreshing="@{vmPNR.refreshing}"
-            app:onRefreshListener="@{()-> vmPNR.onRefreshing()}">
+            app:refreshing="@{vmPRN.refreshing}"
+            app:onRefreshListener="@{()-> vmPRN.onRefreshing()}">
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/list"
                 android:layout_width="match_parent"

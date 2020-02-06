@@ -1,4 +1,4 @@
-package com.afterwork.myroom.viewmodel.pagingroom
+package com.afterwork.myroom.viewmodel.common
 
 import android.util.Log
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.DiffUtil
 import com.afterwork.myroom.R
 import com.afterwork.myroom.data.room.BasicRoomEntity
 import com.afterwork.myroom.databinding.ItemBasicroomBinding
-import com.afterwork.myroom.viewmodel.common.BindingViewHolder
 
 class PagingRoomAdapter: PagedListAdapter<BasicRoomEntity, PagingRoomAdapter.MyViewHolder>(
     DIFF_CALLBACK

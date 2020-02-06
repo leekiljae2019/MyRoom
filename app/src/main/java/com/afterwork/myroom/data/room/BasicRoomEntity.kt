@@ -5,8 +5,7 @@ import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
 
-//@Entity(tableName = "tb_br", indices = arrayOf(Index(value = ["id"])))
-@Entity(tableName = "tb_br")
+@Entity(tableName = "tb_br", indices = arrayOf(Index(value = ["id"])))
 data class BasicRoomEntity(
     @PrimaryKey @ColumnInfo(name= "id") val id: Int,
     @ColumnInfo(name= "title") val title: String,
